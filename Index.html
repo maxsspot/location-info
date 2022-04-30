@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+    <script  src="https://cdnjs.cloudflare.com/ajax/libs/jstimezonedetect/1.0.6/jstz.min.js"></script>
+        <title>Location Info</title>
+    </head>
+    <body>
+        <h2>LOCATION INFO</h2>
+        <p id = "guess"></p>
+        <p id = "time"></p>
+        <script>
+        "use strict";
+        {
+        var x = document.getElementById("demo");
+        setInterval(function() {
+            
+        let currentDate = new Date();
+let time = currentDate.getHours() + ":" + currentDate.getMinutes() + ":" + currentDate.getSeconds();
+        document.getElementById ("time").innerHTML = "Current time: " + time;
+          document.getElementById('guess').innerHTML = "Timezone: " + jstz.determine().name();
+          
+          function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else {
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+
+function showPosition(position) {
+  x.innerHTML = "Latitude: " + position.coords.latitude +
+  "<br>Longitude: " + position.coords.longitude;
+}
+          }, 1000);
+          }
+        </script>
+    </body>
+</html>
